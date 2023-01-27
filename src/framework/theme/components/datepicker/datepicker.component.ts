@@ -333,6 +333,7 @@ export abstract class NbBasePicker<D, T, P> extends NbDatepicker<T, D> {
    * */
   protected subscribeOnValueChange() {
     this.pickerValueChange.subscribe((date) => {
+      this.value = date
       this.onChange$.next(date);
     });
   }

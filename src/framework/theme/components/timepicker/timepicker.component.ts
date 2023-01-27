@@ -148,9 +148,9 @@ export class NbTimePickerComponent<D> implements OnChanges {
    * Date which will be rendered as selected.
    * */
   @Input()
-  set date(date: D) {
-    this._date = date;
-    this.isAM = this.dateService.getDayPeriod(this.date) === NbDayPeriod.AM;
+  set date(d: D) {
+    this._date = d;
+    this.isAM = this.dateService.getDayPeriod(this._date) === NbDayPeriod.AM;
     this.buildColumnOptions();
     this.cd.markForCheck();
   }
@@ -159,7 +159,9 @@ export class NbTimePickerComponent<D> implements OnChanges {
     return this._date;
   }
 
-  _date: D;
+  @Input() datePickerDate: D | undefined = undefined
+
+  private _date: D;
 
   /**
    * In timepicker value should be always true
